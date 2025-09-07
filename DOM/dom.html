@@ -1,0 +1,87 @@
+<!-- There are 5 popular methods available for fetching DOM elements -
+• querySelector
+• querySelectorAll
+* getElementByld
+⚫ getElementByClassName
+⚫ getElementsByClassName I -->
+
+
+
+
+
+<!-- console.log(document); -->
+<!-- the document includes everything each letter of code in html jss js or others. 
+it is a reference to the entire page
+
+
+QUERY SELECTOR HIGHLIGHTS THE whatever that is ("INSIDE TAG")-->
+
+
+
+<!-- input.value will fetch the value isnide the input box like h1elemet.innerHTML-->
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>DOM MANIPULATION</title>
+           <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+           <h1>TO DO LIST</h1>
+           <h4>1. Take care</h4>
+           <h4>2. GO out to eat</h4>
+
+
+           <div>
+           <input type="text" placeholder="Add a new task">
+           <button>ADD TASK</button>
+          </div>
+
+          <script src="dom.js"></script>
+    </body>
+</html>
+
+
+
+
+<!-- removing the parent can only remove the child  -->
+
+
+
+<div id="todo-1" style="display: flex; ">
+       <h4>1. Take class</h4>
+       <button onclick="deleteTodo (1)">delete</button>
+       </div>
+       <div id="todo-2">
+       <h4>2. Go out to eat</h4>
+       <button onclick="deleteTodo (2)">delete</button>
+       </div>
+       </div>
+       <div>
+       <input type="text"></input>
+       <button>Add Todo</button>
+       </div>
+       </body>
+       <script>
+       function deleteTodo (index) 
+       {
+       const element = document.getElementById("todo-" + index);
+       element.parentNode.removeChild(element);
+       }
+       </script>
+
+
+
+
+<!-- 1)fetch the element
+     2)fetch the parent node by element.parentnode.removechild orrr  get parent by its id and use getelementbyId(#id) -->
+
+
+
+<!-- the difference between settimeout and setinterval is that 
+1)settimeout(function , 1000) will call the function once after 1000
+2)setinterval(function, 1000) will call in evry 1 second -->
