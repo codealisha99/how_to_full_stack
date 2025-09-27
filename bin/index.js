@@ -11,4 +11,4 @@ import { createSpinner } from 'nanospinner';
 
 console.log(chalk.bgGreen('hi mom'));
 
-
+console.log(chalk.blue('Hello, world!'));
