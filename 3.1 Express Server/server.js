@@ -1,11 +1,26 @@
 import express from "express";
-
+import cors from "cors";
 
 const app = express();
 
 //add a middleware 
+app.use(express.json());
+app.use(cors()); // Enable CORS for all routes
 
-app.get("/add", (req, res) => {
+let requestcount = 0;
+
+function requestincreaser(req, res, next){
+    requestcount++;
+    console.log(`Request count: ${requestcount}`);
+    next();
+}
+
+
+app.use(requestincreaser);
+//define middleware and then use it in the app
+
+
+app.get("/add/:a/:b",  (req, res) => {
     const a = Number(req.params.a);
     const b = Number(req.params.b);
 
@@ -15,7 +30,7 @@ app.get("/add", (req, res) => {
 })
 
 
-app.get("/multiply/:a/:b", (req, res) => {
+app.get("/multiply/:a/:b",   (req, res) => {
     const a = Number(req.params.a);
     const b = Number(req.params.b);
 
@@ -24,7 +39,7 @@ app.get("/multiply/:a/:b", (req, res) => {
     });
 })
 
-app.get("/divide", (req, res) => {
+app.get("/divide",  (req, res) => {
     const a = Number(req.query.a);
     const b = Number(req.query.b);
 
@@ -33,7 +48,7 @@ app.get("/divide", (req, res) => {
     });
 })
 
-app.get("/substract", (req, res) => {
+app.get("/substract",  (req, res) => {
     const a = Number(req.query.a);
     const b = Number(req.query.b);
 

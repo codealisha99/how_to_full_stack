@@ -75,6 +75,45 @@ todos.push({
 title: document.querySelector("input").value
 })
 render()
-}
+
 function render() {
-for (let i = 0; i < todos.len
+for (let i = 0; i < todos.length; i++) {
+const todo = todos[i];
+const div = document.createElement("div");
+const h1 = document.createElement("h1");
+const button = document.createElement("button");
+button.innerHTML = "Delete"
+h1.innerHTML = todo.title;
+div.append(h1)
+div.append(button)
+document.querySelector("body").appendChild(div)
+}
+}
+</script>
+
+
+
+
+        // in complex DOM we create span and a button and then we append them to a div and then we append the div to the body
+
+
+
+
+
+
+        function createTodo Component(todo)
+         {
+            const div = document.createElement("div");
+            const h1 = document.createElement("h1");
+            const button = document.createElement("button");
+            button.innerHTML = "Delete"
+            h1.innerHTML = todo.title;
+            div.append(h1)
+            div.append(button)
+            return div
+            }
+
+
+
+
+            // setattribute is a method that allows you to set an attribute on an element. attribute can be anything like id, class, src, href, etc.
