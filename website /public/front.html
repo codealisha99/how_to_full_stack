@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>full stack website</title>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <script>
+          async function sendrequest(){
+            const a = document.getElementById("a").value;
+            const b = document.getElementById("b").value;
+
+            try {
+              const response = await fetch(`http://localhost:3000/add/${a}/${b}`);
+              const data = await response.json();
+              alert(`Answer: ${data.answer}`);
+            } catch (error) {
+              console.error("Error:", error);
+              alert("Failed to fetch data");
+            }
+          }
+    </script>
+</head>
+
+
+
+<body>
+    
+    <input type="text" id="a" placeholder="first value">
+    <input type="text" id="b" placeholder="second value">
+
+
+
+    <button onclick="sendrequest()">summmmmm</button>
+
+</body>
+
+
+</html>
