@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 
 
 
-function App(){
+function bell(){
        const [count, setCount] = useState (0);
 
      
@@ -35,7 +35,7 @@ useEffect( function (){
 
 
 
-export default App;
+export default bell;
 
 
 
