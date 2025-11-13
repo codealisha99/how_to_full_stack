@@ -28,7 +28,7 @@ link only inside the browserroute
                            #<link to=""></link> is the syntax on spa
 
 
-                           
+
 
                            #useNavigate 
 function Class12Program() {
@@ -44,3 +44,21 @@ NEET programs for Class 12th
 HUMNE YEHH DUSRE PAGE MAI BANAYA HAI JISMAI EK OPTION HAI JO WITHOUT LOAD KIYAI ANDR HII ANDR WAPIS USENAGIVATE YAA LINK SE DUSRE ENDPOINT JAA RAHA HAI
 {here navigate is used as a door back to the orginal page} 
 
+                              #argument can be the resources that we that function needs like the oil in the engine. rolling up the state
+is like make tunnel links in between the functions
+
+
+                              #prop drilling ka solution is context API
+
+
+
+                              #context API
+
+  1)include it from the react framework 
+  2)declare it above everything to make it global
+  3)wrap the common ancestor with the <bulbcontext.provider value={{it should  contain the argument or the props}}> function <bulbcontext.provider/>   it should be the PROVIDER OF THE VALUES TO ALL THE FURTHER FUNCTIONS
+  4) then use it on the individual function by const {the prop it needs} = usecontext(bulbcontext);        
+
+
+
+                                  ##make a separate provider like a pantry so it clears the kitchen area and then zikr krdo in the kitchen or in the main code## separate providing logic                  
