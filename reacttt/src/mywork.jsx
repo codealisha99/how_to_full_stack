@@ -62,6 +62,7 @@ function Landing(){
 function Layout(){
     return <div>
         <h1>This is the layout page</h1>
+        <outlet />
     </div>
 }
 

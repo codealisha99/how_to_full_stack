@@ -3,7 +3,7 @@ import {useState} from 'react';
 
 
 
-function counter(){
+function Counter(){
        const [count, setCount] = useState (0);
 
     
@@ -11,16 +11,52 @@ function counter(){
 
 
 
-    return <div>
-        {count}
-        <button onClick={incrementCount}>I add</button>
-        <button onClick={decrementCount}>I Substract</button>
-        <button onClick={resetCount }>I reset</button>
+    return <div style={{backgroundColor: count > 10 ? "green" : "#FFDB58",
+          padding : "20px"
+           }}>
+        <h1 style={{color : "#90EE90"}}>Count : {count}</h1>
+        <button 
+        onClick={incrementCount} 
+        style={{backgroundColor: "violet",
+        color: "white",
+        border: "none",
+        borderRadius: "8px",
+        padding: "10px 18px 10px",
+        margin : "0px 10px",
+        cursor: "pointer",
+        fontWeight: "bold",
+              }}> I add
+        </button>
+        <button disabled={count===0}
+        onClick={decrementCount}
+        style={{backgroundColor: "violet",color: "white",border: "none",borderRadius: "8px",padding: "10px 18px 10px",margin : "0px 10px",cursor: "pointer",fontWeight: "bold",opacity: count === 0 ? 0.6 : 1
+              }}>I Substract</button>
+       
+       
+       
+       
+       
+        <button 
+        onClick={resetCount }
+
+         style={{backgroundColor: "violet",
+         color: "white",
+         border: "none",
+         borderRadius: "8px",
+         padding: "10px 18px 10px",
+         margin : "0px 10px",
+         cursor: "pointer",
+         fontWeight: "bold",
+               }}>
+                I reset
+                
+                
+        </button>
         
 
     </div>
 
-function incrementCount(){
+  function incrementCount(){
     setCount(count => count + 1);
   }
   function decrementCount(){
@@ -28,23 +64,16 @@ function incrementCount(){
   }
   function resetCount(){
     setCount(0);
-
   }
-  function Limit(){
-    if (count >= 10){
-       <count style={"red"}></count>
-    }
-  }
-  }
+  
 
 
 
 
-
-
+}
 
  
 
 
 
-export default counter;
+export default Counter;
