@@ -35,7 +35,7 @@ function Class12Program() {
 const navigate = useNavigate();
 function redirectUser() {
 navigate("/
-}
+}✴️
 return <d>
 NEET programs for Class 12th
 <b onClick ={redirectUser}>Go back to landing page</button>
@@ -53,7 +53,8 @@ is like make tunnel links in between the functions
 
 
                               #context API
-
+ ~why are we even using cntext API ?
+ ans:---
   1)include it from the react framework 
   2)declare it above everything to make it global
   3)wrap the common ancestor with the <bulbcontext.provider value={{it should  contain the argument or the props}}> function <bulbcontext.provider/>   it should be the PROVIDER OF THE VALUES TO ALL THE FURTHER FUNCTIONS
@@ -62,3 +63,18 @@ is like make tunnel links in between the functions
 
 
                                   ##make a separate provider like a pantry so it clears the kitchen area and then zikr krdo in the kitchen or in the main code## separate providing logic                  
+ creating providers!!!!!!!!!!!!!!!!             
+
+
+
+                                            ####custom hooks
+
+🪃
+
+♟ useState => Store a state variable, re-render a component when the variable changes
+✓ useEffect => Run an effect whenever a dependency changes                                                             ✅
+
+
+
+######how to mmake a custom hoook:-
+1)custom hook and component

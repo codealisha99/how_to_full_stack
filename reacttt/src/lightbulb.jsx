@@ -1,36 +1,54 @@
-import {useState, createContext} from 'react';
+import {useState, createContext, useContext} from 'react';
 
 
 
 const BulbOn = createContext();
 
+
+function Pantry({children}){
+     [BulbisOn, setBulbisOn] = useState();
+     return (
+    <BulbOn.Provider  value={{BulbisOn,setBulbisOn}}>
+        {children}
+    </BulbOn.Provider>
+     )
+}
+
+
 function App(){
      return <div>
+         <Pantry>
         <LightBulb/>
+        </Pantry>
      </div>
 }
 
 
 function LightBulb(){
-    const [BulbOn, setBulbOn] = useState("true");
+    
     return <div>
-        <StartStop BulbOn={BulbOn} />
-        <Toggle setBulbOn= {setBulbOn}/>     //it should always be caps and camelcasing
+        <StartStop />
+        <Toggle />     //it should always be caps and camelcasing
     </div>
 }
 
 
-function StartStop(BulbOn){
-
+function StartStop(){
+const {BulbisOn} = useContext(BulbOn);
 
     return <div>
-         {BulbOn ? "bulb on" : "bulb off" }
+       return <h2>The bulb is {BulbisOn ? "💡 ON" : "🌑 OFF"}</h2>;
+
+
     </div>
 }
 
 
-function Toggle(setBulbOn){
-    return
+function Toggle(){
+    const {setBulbisOn} = useContext(BulbOn);
+    return <div>
+        <h2> The bulb is {setBulbisOn ? "ON" : "OFF"}</h2>
+    </div>
 }
 
 
