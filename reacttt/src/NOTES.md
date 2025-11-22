@@ -30,7 +30,7 @@ link only inside the browserroute
 
 
 
-                           #useNavigate 
+                            #useNavigate 
 function Class12Program() {
 const navigate = useNavigate();
 function redirectUser() {
@@ -78,3 +78,32 @@ is like make tunnel links in between the functions
 
 ######how to mmake a custom hoook:-
 1)custom hook and component
+2) if u use a hook inside a function it itself is a hook (function)
+3)but why is it called a custom hook?
+4) the custom hook will get an argument 
+
+
+
+
+
+
+
+$$$what i understood was that v r benefitting from the sequence of the code render which is 
+A}console.log(hiii)
+
+
+B}useeffect(console.log(in middle but renders at last ))
+
+
+C}console.log(runs in the middle )
+
+
+in the above case scenario the a>c>b runs to while we use the useref in A [const ref= useRef()] which defines what is ahppening and then the c renders [ref.current] which explains that the ref.current still has the old value 
+
+and now the B [ref.current = value , [value] with the dependency variable as the value] renders where the value is changing so the prev value gets changed at the very last of the code.
+$$$$$$
+
+
+
+
+useDebounce
