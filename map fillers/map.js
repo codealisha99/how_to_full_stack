@@ -22,6 +22,9 @@ const newarray = [];
 
 
 
+
+
+
 function transformer(i){
     return i * 2;
 }

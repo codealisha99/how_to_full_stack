@@ -1,6 +1,9 @@
-function  greet( a : string) : string {
+function  Greet( a : string) : string {
      return 'Hello!' + a;
 }
+
+
+export {Greet};
 
 
 
