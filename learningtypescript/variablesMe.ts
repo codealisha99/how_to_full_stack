@@ -76,3 +76,23 @@ async function fetchData(): Promise<string> {
   
   fetchData().then(data => console.log(data));
   
+
+  interface Car {
+    readonly model: string;
+    year: number;
+  }
+  
+  const myCar: Car = {
+    model: "Tesla",
+    year: 2024
+  };
+  
+  type UserRoles = Record<string, string>;
+
+  const roles: UserRoles = {
+    alisha: "admin",
+    aman: "editor",
+    ritu: "viewer"
+  };
+  
+  
