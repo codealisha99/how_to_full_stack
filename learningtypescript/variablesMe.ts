@@ -95,4 +95,35 @@ async function fetchData(): Promise<string> {
     ritu: "viewer"
   };
   
+  type DeepReadonly<T> = {
+    readonly [K in keyof T]: DeepReadonly<T[K]>;
+  };
+  
+  const config: DeepReadonly<{
+    db: { host: string; port: number };
+  }> = {
+    db: { host: "localhost", port: 5432 }
+  };
+  
+  function format(value: number): string;
+  function format(value: string): string;
+  function format(value: any) {
+    return `Formatted: ${value}`;
+  }
+  
+  format(10);       // ok
+  format("hello");  // ok
+  
+  
+  type UserId = string & { readonly brand: unique symbol };
+type OrderId = string & { readonly brand: unique symbol };
+
+function getUser(id: UserId) {}
+
+const userId = "123" as UserId;
+const orderId = "456" as OrderId;
+
+getUser(orderId); // ❌ Type error
+❌
+  
   
