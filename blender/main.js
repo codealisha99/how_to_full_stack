@@ -1,44 +1,114 @@
-// 1. Initialize the scene, camera, and renderer
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// =====================
+// SCENE, CAMERA, RENDERER
+// =====================
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+const camera = new THREE.PerspectiveCamera(
+  60,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.set(0, 2, 8);
+
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild(renderer.domElement);
 
-// Optional: Add some lighting so the model is visible
-const ambientLight = new THREE.AmbientLight(0x404040, 2); // soft white light
+// =====================
+// LIGHTING (clean + balanced)
+// =====================
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-directionalLight.position.set(5, 10, 7.5);
+
+const hemisphereLight = new THREE.HemisphereLight(
+  0xffffbb,
+  0x080820,
+  0.6
+);
+scene.add(hemisphereLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 10, 7);
 scene.add(directionalLight);
 
-// Optional: Add orbit controls for user interaction (needs OrbitControls.js from Three.js examples)
-// For a complete list of examples, visit the official Three.js documentation
-// If you want to use controls, you need to include the script in your HTML first:
-// <script src="unpkg.com"></script>
-// const controls = new THREE.OrbitControls(camera, renderer.domElement); 
+// =====================
+// DEBUG GRID (optional but recommended)
+// =====================
+const gridHelper = new THREE.GridHelper(10, 10);
+scene.add(gridHelper);
 
-// 2. Load the GLTF model
-const loader = new THREE.GLTFLoader();
+// =====================
+// TEST CUBE (good practice)
+// =====================
+const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+const cubeMaterial = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+cube.position.set(3, 0.5, 0);
+scene.add(cube);
+
+// =====================
+// ORBIT CONTROLS
+// =====================
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.target.set(0, 1, 0);
+
+// =====================
+// GLTF MODEL LOADER
+// =====================
+const loader = new GLTFLoader();
+
 loader.load(
-    'your_model.glb', // Path to your exported .glb file
-    function (gltf) {
-        scene.add(gltf.scene);
-        console.log('Model loaded successfully!');
-    },
-    undefined, // Optional: called while loading is progressing
-    function (error) {
-        console.error('An error happened during loading:', error);
-    }
+  'flowerb.glb',
+  (gltf) => {
+    const model = gltf.scene;
+
+    // Compute bounding box
+    const box = new THREE.Box3().setFromObject(model);
+    const size = box.getSize(new THREE.Vector3());
+    const center = box.getCenter(new THREE.Vector3());
+
+    console.log('Model size:', size);
+    console.log('Model center:', center);
+
+    // Center model
+    model.position.sub(center);
+
+    // Scale to reasonable size
+    const maxDim = Math.max(size.x, size.y, size.z);
+    const scale = 3 / maxDim;
+    model.scale.setScalar(scale);
+
+    scene.add(model);
+  },
+  undefined,
+  (error) => {
+    console.error('GLTF load error:', error);
+  }
 );
 
-// 3. Position the camera and render the scene
-camera.position.z = 5;
+// =====================
+// RESIZE HANDLER
+// =====================
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
+// =====================
+// ANIMATION LOOP
+// =====================
 function animate() {
-    requestAnimationFrame(animate);
-    // controls.update(); // only required if using controls
-    renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+  controls.update();
+  renderer.render(scene, camera);
 }
 
 animate();

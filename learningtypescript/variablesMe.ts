@@ -124,6 +124,22 @@ const userId = "123" as UserId;
 const orderId = "456" as OrderId;
 
 getUser(orderId); // ❌ Type error
+
+
+class Animal {
+  private name: string; // Private member
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  public speak(): void {
+    console.log(`${this.name} makes a noise.`);
+  }
+}
+
+const dog = new Animal("Dog");
+dog.speak();
 ❌
   
   
